@@ -1,0 +1,79 @@
+
+
+.cell-grid {
+    width: 30vmin;
+    height: 30vmin;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 1vmin;
+    background-color: black;
+}
+
+.cell {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    font-weight: bold;
+
+    --x-width: 1vmin;
+    --x-height: 6vmin;
+    
+}
+
+.cell:hover {
+    cursor: pointer;
+}
+
+.cell.empty {
+    color: red;
+}
+
+.cell.x,
+.cell.o {
+    cursor: not-allowed;
+}
+
+.cell.x {
+    color:blue;
+}
+
+.cell.x::after,
+.cell.x::before {
+    content: "";
+    position: absolute;
+
+
+    left: calc( 50% - var(--x-width) / 2);
+
+    width: var(--x-width);
+    height: var(--x-height);
+    background-color: black;
+}
+
+
+.cell.x:after {
+    transform: rotate(45deg);
+}
+
+.cell.x:before {
+    transform: rotate(-45deg);
+}
+
+.cell.o {
+    color: yellow;
+}
+
+.cell.o:before,
+.cell.o:after {
+    content: "";
+    position: absolute;
+}
+
+.cell.o:before {
+    width: var(--x-height);
+    height: var(--x-height);
+    border: solid var(--x-width) black;
+    border-radius: 50%;
+}
